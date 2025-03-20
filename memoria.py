@@ -49,7 +49,42 @@ anchura_pantalla = len(cuadros[0]) * medida_cuadro
 altura_pantalla = (len(cuadros) * medida_cuadro) + altura_boton
 anchura_boton = anchura_pantalla
 
+def mostrar_menu():
+    pantalla_menu = pygame.display.set_mode((anchura_pantalla, altura_pantalla))
+    pygame.display.set_caption('Menú - Memorama en Python')
+    fuente_menu = pygame.font.SysFont("Arial", 40)
 
+    boton_jugar = pygame.Rect(100, 150, 200, 50)
+    boton_salir = pygame.Rect(100, 250, 200, 50)
+
+    ejecutando_menu = True
+    while ejecutando_menu:
+        pantalla_menu.fill(color_blanco)
+
+        pygame.draw.rect(pantalla_menu, color_azul, boton_jugar)
+        pygame.draw.rect(pantalla_menu, color_gris, boton_salir)
+
+        texto_jugar = fuente_menu.render("Iniciar Juego", True, color_blanco)
+        texto_salir = fuente_menu.render("Salir", True, color_negro)
+
+        pantalla_menu.blit(texto_jugar, (120, 160))
+        pantalla_menu.blit(texto_salir, (160, 260))
+
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if boton_jugar.collidepoint(event.pos):
+                    ejecutando_menu = False  # Sale del menú y comienza el juego
+                elif boton_salir.collidepoint(event.pos):
+                    pygame.quit()
+                    sys.exit()
+
+# >>> IMPLEMENTADO: Mostrar menú antes de iniciar el juego
+mostrar_menu()
 
 # La fuente que estará sobre el botón
 tamanio_fuente = 20
