@@ -49,6 +49,8 @@ anchura_pantalla = len(cuadros[0]) * medida_cuadro
 altura_pantalla = (len(cuadros) * medida_cuadro) + altura_boton
 anchura_boton = anchura_pantalla
 
+
+
 # La fuente que estará sobre el botón
 tamanio_fuente = 20
 fuente = pygame.font.SysFont("Arial", tamanio_fuente)

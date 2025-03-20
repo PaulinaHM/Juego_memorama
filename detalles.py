@@ -22,10 +22,3 @@ SONIDOS = {
     "fracaso": pygame.mixer.Sound("archivos/equivocado.wav"),
     "voltear": pygame.mixer.Sound("archivos/voltear.wav"),
 }
-'''''
-sonido_fondo = pygame.mixer.Sound("archivos/fondo.wav")
-sonido_clic = pygame.mixer.Sound("archivos/clic.wav")
-sonido_exito = pygame.mixer.Sound("archivos/ganador.wav")
-sonido_fracaso = pygame.mixer.Sound("archivos/equivocado.wav")
-sonido_voltear = pygame.mixer.Sound("archivos/voltear.wav")
-'''''
