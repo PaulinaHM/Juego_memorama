@@ -2,17 +2,17 @@
 
 Un juego de memoria clásico  creado con Python y la biblioteca `pygame`.
 
-## 🎮 Descripción
+##  Descripción
 Este proyecto es un juego de Memorama donde el jugador debe encontrar las parejas de imágenes ocultas. El juego incluye sonidos, imágenes y una interfaz gráfica sencilla creada con `pygame`.
 
-## 🚀 Funcionalidades
+##  Funcionalidades
 ✅ Juego de memoria clásico con imágenes.  
 ✅ Sonidos para eventos de éxito y fracaso.  
 ✅ Barajado aleatorio de las tarjetas al inicio.  
 ✅ Interfaz gráfica con botón para reiniciar el juego.  
 
 
-## 🛠️ Instalación
+##  Instalación
 ### 1. Clona el repositorio
 
 git clone https://github.com/PaulinaHM/Juego_memorama.git
