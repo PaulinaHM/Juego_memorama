@@ -1,21 +1,19 @@
-
 import pygame
 import sys
 import math
 import time
 import random
+from detalles import *
+from detalles import SONIDOS
+pygame.mixer.Sound.play(SONIDOS["clic"])
 
 
 #Iniciamos todo lo de Pygame para poder usar sonido, pantalla, imagenes y efectos
 
+
 pygame.init()
 pygame.font.init()
 pygame.mixer.init()
-
-
-#Variables y configuraciones que vamos a usar a lo largo del programa
-altura_boton = 30  # Del botón de abajo, para iniciar juego
-medida_cuadro = 160  # Medida de la imagen en pixeles
 
 # Lo siguiente configura la parte trasera de cada tarjeta
 nombre_imagen_oculta = "archivos/oculta.png"
@@ -44,18 +42,7 @@ cuadros = [
      Cuadro("archivos/sandía.png"), Cuadro("archivos/sandía.png")],
 ]
 
-# Colores
-color_blanco = (255, 255, 255)
-color_negro = (0, 0, 0)
-color_gris = (206, 206, 206)
-color_azul = (30, 136, 229)
 
-# Los sonidos
-sonido_fondo = pygame.mixer.Sound("archivos/fondo.wav")
-sonido_clic = pygame.mixer.Sound("archivos/clic.wav")
-sonido_exito = pygame.mixer.Sound("archivos/ganador.wav")
-sonido_fracaso = pygame.mixer.Sound("archivos/equivocado.wav")
-sonido_voltear = pygame.mixer.Sound("archivos/voltear.wav")
 
 # Calculamos el tamaño de la pantalla en base al tamaño de los cuadrados
 anchura_pantalla = len(cuadros[0]) * medida_cuadro
@@ -112,7 +99,7 @@ def aleatorizar_cuadros():
 
 def comprobar_si_gana():
     if gana():
-        pygame.mixer.Sound.play(sonido_exito)
+        pygame.mixer.Sound.play(SONIDOS["exito"])
         reiniciar_juego()
 
 
@@ -132,7 +119,7 @@ def reiniciar_juego():
 
 
 def iniciar_juego():
-    pygame.mixer.Sound.play(sonido_clic)
+    pygame.mixer.Sound.play(SONIDOS ["clic"])
     global juego_iniciado
     # Aleatorizar 3 veces
     for i in range(3):
@@ -141,12 +128,11 @@ def iniciar_juego():
     juego_iniciado = True
 
 
-
 #Iniciamos la pantalla con las medidas previamente calculadas, colocamos título y reproducimos el sonido de fondo
 
 pantalla_juego = pygame.display.set_mode((anchura_pantalla, altura_pantalla))
 pygame.display.set_caption('Memorama en Python')
-pygame.mixer.Sound.play(sonido_fondo, -1)  # El -1 indica un loop infinito
+pygame.mixer.Sound.play(SONIDOS["fondo"], -1)  # El -1 indica un loop infinito
 # Ciclo infinito...
 while True:
     # Escuchar eventos, pues estamos en un ciclo infinito que se repite varias veces por segundo
@@ -181,7 +167,7 @@ while True:
                     x1 = x
                     y1 = y
                     cuadros[y1][x1].mostrar = True
-                    pygame.mixer.Sound.play(sonido_voltear)
+                    pygame.mixer.Sound.play(SONIDOS["voltear"])
                 else:
                     # En caso de que ya hubiera una clickeada anteriormente y estemos buscando el par, comparamos...
                     x2 = x
@@ -197,9 +183,9 @@ while True:
                         x2 = None
                         y1 = None
                         y2 = None
-                        pygame.mixer.Sound.play(sonido_clic)
+                        pygame.mixer.Sound.play(SONIDOS["clic"])
                     else:
-                        pygame.mixer.Sound.play(sonido_fracaso)
+                        pygame.mixer.Sound.play(SONIDOS["fracaso"])
                         # Si no coinciden, tenemos que ocultarlas en el plazo de [segundos_mostrar_pieza] segundo(s). Así que establecemos
                         # la bandera. Como esto es un ciclo infinito y asíncrono, podemos usar el tiempo para saber
                         # cuándo fue el tiempo en el que se empezó a ocultar
